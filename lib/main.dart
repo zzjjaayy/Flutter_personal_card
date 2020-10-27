@@ -6,11 +6,9 @@ void main() {
   runApp(MyApp());
 }
 
-// Containers
-// They are very similar to "div" in web development
-// Containers with no children try to take all the space available,
-// once children are added, the container sizes itself to its children
-// REMEMBER : "Container" is a single-child widget {can only have one child}
+// A Column Widget {Multi Child Layout}
+// Aligns all its children vertically
+//
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,26 +16,58 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.blue,
         body: SafeArea(
-          child: Container(
-            height: 100.0, // height and width just like html and css
-            width: 100.0, // the value is pixels by default
-            margin: EdgeInsets.all(20.0),
-            // EdgeInsets.all gives equal margin on all sides
+          child: Column(
+            verticalDirection: VerticalDirection.up,
+            // the above property changes the direction from the which the
+            // children are starting to align. Possible values are "up" and "down"
 
-            // margin: EdgeInsets.symmetric(vertical: 50.0, horizontal: 10.0),
-            // the above line gives different margin for top/bottom and right/left
+            mainAxisSize: MainAxisSize.min,
+            // this will shrink the main axis {vertical in case of columns} to
+            // min unlike previously where the column took all of the
+            // horizontal space.
 
-            // margin: EdgeInsets.fromLTRB(left, top, right, bottom),
-            // the above lines gives different margins on all sides
+            mainAxisAlignment: MainAxisAlignment.end,
+            // this determines the position of the children in the column
+            // i.e start, end, center, etc.
+            // the other values are spaceAround, spaceBetween and spaceEvenly
+            // which are very similar to flexBox in css.
+            // NOTE : mainAxis will change when it is column or row.
 
-            // margin: EdgeInsets.only(left: 30.0),
-            // this gives margin at only one side that is specified
-
-            padding: EdgeInsets.all(20.0),
-            // all the rules of EdgeInsets works same with padding and margin
-            // NOTE : padding and margin are just like as in web development
-            color: Colors.white,
-            child: Text("Hello"),
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            // crossAxis is the non-primary axis, horizontal in case of Column
+            // "stretch" value makes the children all the available space in
+            // the container wrt to this axis
+            children: [
+              Container(
+                height: 100.0,
+                width: 100.0,
+                color: Colors.white,
+                child: Text("Container1"),
+              ),
+              Container(
+                height: 100.0,
+                width: 100.0,
+                color: Colors.blueGrey,
+                child: Text("Container2"),
+              ),
+              SizedBox(
+                height: 20.0,
+                // a sized box is used to make space between the column items
+              ),
+              Container(
+                height: 100.0,
+                width: 100.0,
+                color: Colors.red,
+                child: Text("Container3"),
+              ),
+              Container(
+                width: double.infinity,
+                // this sets the width of the container to "infinity"
+                // this container is to increase the width of the column
+                // and then the rest of the containers will appear in the
+                // center of the screen
+              ),
+            ],
           ),
         ),
       ),
@@ -45,7 +75,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// SafeArea
-// This widget keeps all its content inside the bounds of the device so
-// it is fully visible to the use. Earlier the widgets would overflow
-// through components like notch, curved edges, etc.
+// Row :
+// All the properties talked about in the above section for columns apply to Rows
+// just with the difference of direction
+// main axis will become horizontal instead of vertical
+// cross axis will be vertical
+// width and height will have different implications in elements like SizedBox
