@@ -6,6 +6,17 @@ void main() {
   runApp(MyApp());
 }
 
+// use custom fonts
+// download the font, and transfer the *.ttf file to a new folder in the project
+// go to pubspec.yaml and add the following lines under "flutter :"
+
+// fonts:
+// - family: family_name
+// fonts:
+// - asset: name_of_folder/name_of_font.ttf
+
+// REMEMBER -
+// Every time you add a new resource, the app needs to cold boot again.{hot reload wont work}
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,35 +24,28 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.teal,
         body: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
             children: [
-              Container(
-                color: Colors.red,
-                width: 100.0,
+              CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage('images/me.png'),
               ),
-              Container(
-                // color: Colors.white,
-                width: 100.0,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      color: Colors.yellow,
-                      height: 100.0,
-                      width: 100.0,
-                    ),
-                    Container(
-                      color: Colors.green,
-                      width: 100.0,
-                      height: 100.0,
-                    ),
-                  ],
+              Text(
+                "Jay Rathod",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Oswald',
                 ),
               ),
-              Container(
-                color: Colors.blue,
-                width: 100.0,
+              Text(
+                "FLUTTER DEVELOPER",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontFamily: 'SourceSansPro',
+                ),
               ),
             ],
           ),
