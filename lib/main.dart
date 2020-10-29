@@ -6,17 +6,10 @@ void main() {
   runApp(MyApp());
 }
 
-// use custom fonts
-// download the font, and transfer the *.ttf file to a new folder in the project
-// go to pubspec.yaml and add the following lines under "flutter :"
-
-// fonts:
-// - family: family_name
-// fonts:
-// - asset: name_of_folder/name_of_font.ttf
-
-// REMEMBER -
-// Every time you add a new resource, the app needs to cold boot again.{hot reload wont work}
+// Using icons in flutter app :
+// Instead of using image resources for icons, a "Icon" widget is used.
+// It adds flexibility and it is not displayed but drawn.
+// to get different icons go to -> https://www.materialpalette.com/icons
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -45,6 +38,55 @@ class MyApp extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 20.0,
                   fontFamily: 'SourceSansPro',
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.phone, // the "Icons" class supports Material icons
+                      // size: 100.0, // for changing size of the icon
+                      color: Colors.teal.shade500,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      "+91 112 2334 455",
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.teal[900],
+                          // the [] brackets are used for defining shade {the higher -> the darker}
+                          // It can also be done as "teal.shade900"
+                          fontFamily: 'SourceSansPro'),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.email,
+                      color: Colors.teal.shade500,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      "example@gmail.com",
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.teal[900],
+                          fontFamily: 'SourceSansPro'),
+                    ),
+                  ],
                 ),
               ),
             ],
