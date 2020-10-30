@@ -6,9 +6,6 @@ void main() {
   runApp(MyApp());
 }
 
-// Using padding in Widgets which don't support it
-// The unsupported widget can be enclosed in a "Padding" widget
-// The padding widget does not actually work like padding but like margin.
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,6 +14,8 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.teal,
         body: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment
+                .center, // centers the children on the vertical axis
             children: [
               CircleAvatar(
                 radius: 50.0,
@@ -39,53 +38,43 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'SourceSansPro',
                 ),
               ),
+              SizedBox(
+                  height: 20.0,
+                  width: 150.0,
+                  child: Divider(
+                    color: Colors.teal[100],
+                  )),
               Card(
                 color: Colors.white,
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.phone,
-                        color: Colors.teal.shade500,
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Text(
-                        "+91 112 2334 455",
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.teal[900],
-                            fontFamily: 'SourceSansPro'),
-                      ),
-                    ],
+                child: ListTile(
+                  leading: Icon(
+                    Icons.phone,
+                    color: Colors.teal.shade500,
+                  ),
+                  title: Text(
+                    "+91 112 2334 455",
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.teal[900],
+                        fontFamily: 'SourceSansPro'),
                   ),
                 ),
               ),
               Card(
                 color: Colors.white,
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.email,
-                        color: Colors.teal.shade500,
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Text(
-                        "example@gmail.com",
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.teal[900],
-                            fontFamily: 'SourceSansPro'),
-                      ),
-                    ],
+                child: ListTile(
+                  leading: Icon(
+                    Icons.email,
+                    color: Colors.teal.shade500,
+                  ),
+                  title: Text(
+                    "example@gmail.com",
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.teal[900],
+                        fontFamily: 'SourceSansPro'),
                   ),
                 ),
               ),
